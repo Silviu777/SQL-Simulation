@@ -1,0 +1,78 @@
+
+
+// For projects that expect 3 attributes for each column
+// Pentru proiecte care asteapta 3 atribute pentru fiecare coloana
+
+CREATE TABLE clienti ((id,integer,0),(nume,text,''),(cont,text,''))
+CREATE TABLE facturi ((id,integer,0),(idClient,integer,0),(serie,text,''),(valoare,float,0.0))
+
+
+// IMPORTANT float was an accepted data type for a column. If your project does not cover float type, change it to integer
+// IMPORTANT float este un tip de date acceptat pentru o coloană. Dacă proiectul nu acoperă tipul float, schimbați-l în integer
+
+
+// For projects that expect 4 attributes for each column
+// Pentru proiecte care asteapta 4 atribute pentru fiecare coloana
+
+//Input file
+//Fisier intrare
+
+CREATE TABLE clienti ((id,integer,1000,0),(nume,text,128,''),(cont,text,128,''))
+CREATE TABLE facturi ((id,integer,1000,0),(idClient,integer,1000,0),(serie,text,128,''),(valoare,float,1000,0.0))
+
+INSERT INTO clienti VALUES (1, "First company SRL", "RO1234")
+INSERT INTO clienti VALUES (2, "2nd company SRL", "RO1111")
+INSERT INTO clienti VALUES (3, "3rd company SRL", "RO2222")
+INSERT INTO clienti VALUES (4, "NonStop SRL", "RO3333")
+INSERT INTO clienti VALUES (5, "Mini SRL", "RO4444")
+
+INSERT INTO facturi VALUES (1, 1, "ZX 1", 120)
+INSERT INTO facturi VALUES (2, 1, "ZX 2", 34)
+INSERT INTO facturi VALUES (3, 1, "ZX 3", 269)
+INSERT INTO facturi VALUES (4, 5, "BV 1", 18)
+INSERT INTO facturi VALUES (5, 5, "BV 1", 1900)
+
+
+//Commands to process the data
+//Comenzi prelucrare date
+
+DISPLAY TABLE clienti
+DISPLAY TABLE facturi
+
+SELECT (nume) FROM clienti WHERE id = 3
+SELECT (id,nume,cont) FROM clienti WHERE id = 2
+SELECT (id,idClient,serie,valoare) FROM facturi
+SELECT ALL FROM clienti WHERE id = 5
+SELECT ALL FROM facturi
+
+//For each SELECT a report should be generated
+//Pentru fiecare comanda SELECT trebuie sa fie generat un fisier raport
+
+UPDATE clienti SET nume = "Mega" WHERE id = 3
+UPDATE facturi SET valoare = 1990 WHERE id = 4
+UPDATE facturi SET serie = 'XC' WHERE idClient = 1
+
+SELECT ALL FROM clienti
+SELECT ALL FROM facturi
+
+DELETE FROM clienti WHERE id = 3
+
+SELECT ALL FROM clienti
+
+
+//close the app and restart it without the initial file
+//inchide aplicatia si o repornesti fara a mai trimite fisierul initial ca argument pentru main
+
+//the previous data should be visible
+//datele anterioare trebuie sa existe
+
+SELECT ALL FROM clienti
+SELECT ALL FROM facturi
+
+IMPORT clienti clienti.csv
+
+SELECT ALL FROM clienti
+
+DROP TABLE facturi
+
+

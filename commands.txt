@@ -1,0 +1,2 @@
+CREATE TABLE clienti ((id,integer,1000,0),(nume,text,128,''),(cont,text,128,''))
+CREATE TABLE facturi ((id,integer,1000,0),(idClient,integer,1000,0),(serie,text,128,''),(valoare,float,1000,0.0))
